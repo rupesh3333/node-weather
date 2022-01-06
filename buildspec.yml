@@ -19,10 +19,6 @@ phases:
       - unzip awscliv2.zip
       - sudo ./aws/install
       - aws configure
-      - AWS Access Key ID [None]: AKIAXBZYQUTBZ6E2GMKQ
-      - AWS Secret Access Key [None]: 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
-      - Default region name [None]: us-east-1
-      - Default output format [None]: json
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
