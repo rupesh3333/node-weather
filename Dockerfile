@@ -4,4 +4,3 @@ WORKDIR /mynoderak
 COPY . /mynoderak
 RUN  npm install
 CMD ["npm","start"]
-ENTRYPOINT ["/bin/mynoderak"]
