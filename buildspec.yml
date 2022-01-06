@@ -13,8 +13,7 @@ phases:
       - ls -ltr
       - docker/docker compose --help
       - which docker
-      - ln -s $(which docker) /usr/local/bin/com.docker.cli
-
+      - ln -s $(which docker) /usr/local/bin/com.docker.cli  
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
