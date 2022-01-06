@@ -2,23 +2,6 @@ version: 0.2
 run-as: root
 phases:
 
-  install:
-    runtime-versions:
-      python: 3.8
-    commands:
-      - echo "Performing manual install of compose cli"
-      - curl -L -o docker-linux-amd64.tar.gz https://github.com/docker/compose-cli/releases/download/v1.0.10/docker-linux-amd64.tar.gz
-      - tar xzf docker-linux-amd64.tar.gz
-      - chmod +x docker/docker
-      - ls -ltr
-      - docker/docker compose --help
-      - which docker
-      - ln -s $(which docker) /usr/local/bin/com.docker.cli 
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - yum install unzip -y
-      - unzip awscliv2.zip
-      - sudo ./aws/install
-      - aws configure
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -34,8 +17,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"%s"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG:latest > imagedefinitions.json
+      - printf '[{"name":"%s"imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
