@@ -1,4 +1,4 @@
-FROM node:16-buster-slim
+FROM node
 RUN mkdir /mynoderak
 WORKDIR /mynoderak
 COPY . /mynoderak
