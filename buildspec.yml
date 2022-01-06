@@ -1,5 +1,6 @@
 version: 0.2
 run-as: root
+phases:
 
   install:
     runtime-versions:
@@ -14,7 +15,6 @@ run-as: root
       - which docker
       - ln -s $(which docker) /usr/local/bin/com.docker.cli
 
-phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
